@@ -39,14 +39,14 @@ config['rutaexport'] = "D:\\\\export\\"
 config['moscapal'] = "C:\\DMAOPS\\ASSETS\\moscaPAL.png"
 ```
 
-** Nota: Recordar que las rutas en windows deben contener doble barra por cada barra **
-    Ejemplo: _"C:\" debería escribirse "C:\\"_
+**Nota: Recordar que las rutas en windows deben contener doble barra por cada barra**  
+    Ejemplo: _"C:\" debería escribirse "C:\\"_  
 
-_rutaffmpeg_ debe apuntar a un binario o ejecutable de ffmpeg.
-_rutaleer_   debe apuntar a la carpeta donde se leeran todos los archivos .mp4 y/o .mov que se van a convertir
-_rutainter_  debe apuntar a una carpeta temporal dobde se realizará el primer proceso de conversión, se recominda que sea en una unidad de rápida lectura/escritura y con suficiente espacio. Aunque luego este programa se encargará de eliminar su contenido.
-_rutaexport_ debe apuntar a la carpeta final donde se encontrará todo el material ya convertido y con la gráfica aplicada.
-_moscapal_   debe apuntar a un archivo (preferente) PNG que contendrá una mosca o un logo. Esta imagen debe coincidir con el tamaño y resolución final de salida de este programa (por defecto debe ser 720x576)
+_rutaffmpeg_ debe apuntar a un binario o ejecutable de ffmpeg.  
+_rutaleer_   debe apuntar a la carpeta donde se leeran todos los archivos .mp4 y/o .mov que se van a convertir.  
+_rutainter_  debe apuntar a una carpeta temporal dobde se realizará el primer proceso de conversión, se recominda que sea en una unidad de rápida lectura/escritura y con suficiente espacio. Aunque luego este programa se encargará de eliminar su contenido.  
+_rutaexport_ debe apuntar a la carpeta final donde se encontrará todo el material ya convertido y con la gráfica aplicada.  
+_moscapal_   debe apuntar a un archivo (preferente) PNG que contendrá una mosca o un logo. Esta imagen debe coincidir con el tamaño y resolución final de salida de este programa (por defecto debe ser 720x576).  
 
 
 _config['filtroffmpeg']_ no es necesario cambiarlo, así como está permite la conversión a PAL, pero realizando ajustes se puede convertir a otros formatos deseados.
