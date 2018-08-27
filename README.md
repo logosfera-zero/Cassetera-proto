@@ -39,7 +39,7 @@ config['rutaexport'] = "D:\\\\export\\"
 config['moscapal'] = "C:\\DMAOPS\\ASSETS\\moscaPAL.png"
 ```
 
-** Nota: Recordar que las rutas en windows deben contener doble barra por cada barra**
+** Nota: Recordar que las rutas en windows deben contener doble barra por cada barra **
     Ejemplo: _"C:\" debería escribirse "C:\\"_
 
 _rutaffmpeg_ debe apuntar a un binario o ejecutable de ffmpeg.
