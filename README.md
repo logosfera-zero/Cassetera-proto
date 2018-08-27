@@ -40,17 +40,21 @@ config['moscapal'] = "C:\\DMAOPS\\ASSETS\\moscaPAL.png"
 ```
 
 **Nota: Recordar que las rutas en windows deben contener doble barra por cada barra**  
-    Ejemplo: _"C:\" debería escribirse "C:\\"_  
+    Ejemplo: _"C:\\" debería escribirse "C:\\\\"_  
 
 _rutaffmpeg_ debe apuntar a un binario o ejecutable de ffmpeg.  
+  
 _rutaleer_   debe apuntar a la carpeta donde se leeran todos los archivos .mp4 y/o .mov que se van a convertir.  
+  
 _rutainter_  debe apuntar a una carpeta temporal dobde se realizará el primer proceso de conversión, se recominda que sea en una unidad de rápida lectura/escritura y con suficiente espacio. Aunque luego este programa se encargará de eliminar su contenido.  
+  
 _rutaexport_ debe apuntar a la carpeta final donde se encontrará todo el material ya convertido y con la gráfica aplicada.  
+  
 _moscapal_   debe apuntar a un archivo (preferente) PNG que contendrá una mosca o un logo. Esta imagen debe coincidir con el tamaño y resolución final de salida de este programa (por defecto debe ser 720x576).  
-
+  
 
 _config['filtroffmpeg']_ no es necesario cambiarlo, así como está permite la conversión a PAL, pero realizando ajustes se puede convertir a otros formatos deseados.
-
+  
 _config['metadata']_ no funciona aún, puesto que la idea es poder incorporar esta metadata, pero no se encontro soporte en exiftool o ffmpeg para poder escribir metadata en archivos .mpg
 
 
@@ -79,33 +83,13 @@ Para utilizar Cassetera, se requieren instalar los siguientes programas:
 pip install requests colorama
 ```
 
-### Cómo contribuir
----
-Esta sección explica a desarrolladores cuáles son las maneras habituales de enviar una solicitud de adhesión de nuevo código (“pull requests”), cómo declarar fallos en la herramienta y qué guías de estilo se deben usar al escribir más líneas de código. También puedes hacer un listado de puntos que se pueden mejorar de tu código para crear ideas de mejora.
-
-### Código de conducta 
----
-El código de conducta establece las normas sociales, reglas y responsabilidades que los individuos y organizaciones deben seguir al interactuar de alguna manera con la herramienta digital o su comunidad. Es una buena práctica para crear un ambiente de respeto e inclusión en las contribuciones al proyecto. 
-
-La plataforma Github premia y ayuda a los repositorios dispongan de este archivo. Al crear CODE_OF_CONDUCT.md puedes empezar desde una plantilla sugerida por ellos. Puedes leer más sobre cómo crear un archivo de Código de Conducta (aquí)[https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/]
 
 ### Autor/es
 ---
 * **Ignacio Tula** - (https://www.logos.net.ar/nosotros/ignacio-tula)
 
-### Información adicional
----
-Esta es la sección que permite agregar más información de contexto al proyecto como alguna web de relevancia, proyectos similares o que hayan usado la misma tecnología.
+
 
 ### Licencia 
 ---
-[LICENCIA](https://github.com/EL-BID/Plantilla-de-repositorio/blob/master/LICENSE.md)
-
-La licencia especifica los permisos y las condiciones de uso que el desarrollador otorga a otros desarrolladores que usen y/o modifiquen la herramienta digital.
-
-Incluye en esta sección una note con el tipo de licencia otorgado a esta herramienta digital. El texto de la licencia debe estar incluído en un archivo *LICENSE.md* o *LICENSE.txt* en la carpeta raíz.
-
-Si desconoces qué tipos de licencias existen y cuál es la mejor para cada caso, te recomendamos visitar la página https://choosealicense.com/.
-
-## Limitación de responsabilidades
-
+Cassetera está disponible bajo la licencia de software libre GNU GENERAL PUBLIC LICENSE Version 3
