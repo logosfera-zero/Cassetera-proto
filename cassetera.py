@@ -43,7 +43,7 @@ config = {}
 
     #Cambiar estos valores para indiquen una ruta válida
 config['rutaffmpeg'] = "C:\\DMAOPS\\FFMPEG\\ffmpeg.exe"
-config['rutaleer'] =  "D:\\Videos\\Desktop"
+config['rutaleer'] =  ""
 config['rutainter'] = "D:\\\\inter\\"
 config['rutaexport'] = "D:\\\\export\\"
 config['moscapal'] = "C:\\DMAOPS\\ASSETS\\moscaPAL.png"
@@ -247,6 +247,9 @@ def detencionPorError():
 
 clear()
 GUIencabezadoInicial()
+if (config['rutaleer'] == ""):
+	a = input("Pegá la ruta a convertir: ")
+	config['rutaleer'] = a
 GUImostrarConfiguracion()
 detencionPorError()
 GUItituloActitividadActual("Leeremos los archivos de la ruta de lectura")
