@@ -44,7 +44,7 @@ config['moscapal'] = "C:\\DMAOPS\\ASSETS\\moscaPAL.png"
 
 _rutaffmpeg_ debe apuntar a un binario o ejecutable de ffmpeg.  
   
-_rutaleer_   debe apuntar a la carpeta donde se leeran todos los archivos .mp4 y/o .mov que se van a convertir.  
+_rutaleer_   debe apuntar a la carpeta donde se leeran todos los archivos .mp4 y/o .mov que se van a convertir. También se puede dejar la cadena vacía "" y el software solicitará se pegue la ruta de manera interactiva durante la ejecución (útil para cuando el resto de la configuración no varía, pero se requieren varias pasadas a diferentes carpetas de lecturas).
   
 _rutainter_  debe apuntar a una carpeta temporal dobde se realizará el primer proceso de conversión, se recominda que sea en una unidad de rápida lectura/escritura y con suficiente espacio. Aunque luego este programa se encargará de eliminar su contenido.  
   
