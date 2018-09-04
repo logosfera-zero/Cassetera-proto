@@ -45,7 +45,7 @@ config = {}
 config['rutaffmpeg'] = "C:\\DMAOPS\\FFMPEG\\ffmpeg.exe"
 config['rutaleer'] =  ""
 config['rutainter'] = "D:\\\\inter\\"
-config['rutaexport'] = "D:\\\\export\\"
+config['rutaexport'] = ""
 config['moscapal'] = "C:\\DMAOPS\\ASSETS\\moscaPAL.png"
 
     #No cambiar este valor
@@ -96,7 +96,7 @@ def crearComandoDeConversionPal(archivo):
     cadena =  "\"" + config['rutaffmpeg'] + "\""
     cadena += " -y -i " + "\"" + archivo + "\""
     cadena += " " + config['filtroffmpeg'] + " -c:v libx264 -r 25 -b:v 3M -maxrate 5M -bufsize 5M -pass 1"
-    cadena += " " + "\"" +  archivo.replace(config['rutaleer'],config['rutainter']) + "\""
+    cadena += " " + "\"" +  archivo.replace(config['rutaleer'],config['rutaexport']) + "\""
     return cadena
 
 
@@ -119,8 +119,7 @@ def esteArchivoEsVideo(nombreArchivo):
     if ( nombreArchivo[-3:] == "mp4" or nombreArchivo[-3:] == "MP4"):
         return True
     
-    elif ( nombreArchivo[-3:] == "mov" or nombreArchivo[-3:] == "MOV"):
-        return True
+   
     
     else:
         print(nombreArchivo[-3:])
@@ -186,9 +185,9 @@ def procesoprevio():
         subprocess.Popen("move /y proceso1.bat proceso1.bak", stdout=subprocess.PIPE, shell=True)
         
     
-    if (isfile(os.getcwd()+"//proceso2.bat")):
-        GUIpopupProcesoExistente(2)
-        subprocess.Popen("move /y proceso2.bat proceso2.bak", stdout=subprocess.PIPE, shell=True)
+#    if (isfile(os.getcwd()+"//proceso2.bat")):
+#        GUIpopupProcesoExistente(2)
+#        subprocess.Popen("move /y proceso2.bat proceso2.bak", stdout=subprocess.PIPE, shell=True)
 
 
 
@@ -213,7 +212,7 @@ def GUImostrarConfiguracion():
     print("\n")
     print( Back.CYAN +  Fore.RED + "          Cassetera da play con esta configuración actual                                 ")
     print( Back.CYAN +  Fore.BLACK + "Ruta de lectura  : " + Fore.WHITE + config['rutaleer'] + ( " " * (85 - 19 -  len(config['rutaleer']))    ) + existeRutaLectura()  )
-    print( Back.CYAN +  Fore.BLACK + "Ruta temporal    : " + Fore.WHITE + config['rutainter'] + ( " " * (85 - 19 -  len(config['rutainter']))  ) + existeRutaTemporal() )
+    print( Back.CYAN +  Fore.BLACK + "Ruta temporal    : " + Fore.WHITE + config['rutainter'] + ( " " * (85 - 19 -  len(config['rutainter']))  ) + "N/A" )
     print( Back.CYAN +  Fore.BLACK + "Ruta Export Final: " + Fore.WHITE + config['rutaexport'] + ( " " * (85 - 19 -  len(config['rutaexport']))) + existeRutaFinal()    )
     print( Back.CYAN +  Fore.BLACK + "Ruta PNG Mosca   : " + Fore.WHITE + config['moscapal'] + ( " " * (85 - 19 -  len(config['moscapal']))    ) + existeRutaMoscal()   )
     print( Back.CYAN +  Fore.BLACK + "                                                                                          " )
@@ -250,6 +249,16 @@ GUIencabezadoInicial()
 if (config['rutaleer'] == ""):
 	a = input("Pegá la ruta a convertir: ")
 	config['rutaleer'] = a
+
+GUIencabezadoInicial()
+if (config['rutaexport'] == ""):
+    a = input("Pegá la ruta a exportar (se creará la carpeta anterior): ")
+    b = config['rutaleer'].split("\\")
+    c = len(b)
+    config['rutaexport'] = a + "\\" + b[c-1]
+    os.mkdir(config['rutaexport'])
+
+
 GUImostrarConfiguracion()
 detencionPorError()
 GUItituloActitividadActual("Leeremos los archivos de la ruta de lectura")
@@ -259,7 +268,7 @@ clear()
 GUIencabezadoInicial()
 procesoprevio()
 batch1 = open("proceso1.bat","w")
-batch2 = open("proceso2.bat","w")
+#batch2 = open("proceso2.bat","w")
 GUItituloActitividadActual("Crearemos el proceso de batch para convertir cada archivo detectado")
 print("\n\n")
 
@@ -267,9 +276,9 @@ for i in listadoArchivo:
     comando = crearComandoDeConversionPal(i)
     batch1.write(comando + "\n")
     print(Back.WHITE + Fore.BLACK + "\nAsi se convierte:\n" + Back.GREEN + Fore.BLACK + comando )
-    comando = crearComandoDeSuperposicionDeMosca(i)
-    print(Back.WHITE + Fore.BLACK + "\nAsi se superpone mosca:\n" + Back.RED + Fore.BLACK + comando )
-    batch2.write(comando + "\n")
+    #comando = crearComandoDeSuperposicionDeMosca(i)
+    #print(Back.WHITE + Fore.BLACK + "\nAsi se superpone mosca:\n" + Back.RED + Fore.BLACK + comando )
+    #batch2.write(comando + "\n")
     print(Back.BLACK + Fore.WHITE + "\n\n")
     sleep(3)
     
@@ -279,7 +288,7 @@ GUIencabezadoInicial()
 GUItituloActitividadActual("Cerraremos los archivos del proceso de batch")
 print(Back.BLACK)
 batch1.close()
-batch2.close()
+#batch2.close()
 sleep(5.00)
 
 clear()
@@ -290,20 +299,8 @@ p = Popen("proceso1.bat", cwd=r"." )
 stdout, stderr = p.communicate()
 sleep(5.00)
 
-clear()
-GUIencabezadoInicial()
-GUItituloActitividadActual("Comenzaremos la ejecución del proceso 2, se deja paso al proceso externo")
-print(Back.WHITE + Fore.BLUE + "")
-p = Popen("proceso2.bat", cwd=r"." )
-stdout, stderr = p.communicate()
-sleep(5.00)
 
-print(Back.BLACK)
-clear()
-GUIencabezadoInicial()
-GUItituloActitividadActual("Eliminaremos los archivos temporales que fueron creados")
-subprocess.Popen("del /q \"" + config['rutainter'] + "*\"" , stdout=subprocess.PIPE, shell=True)
-sleep(5.00)
+
 
 
 
